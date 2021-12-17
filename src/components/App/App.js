@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
+import "firebase/auth"
 
-import Landing from '../../views/Landing/Landing';
+import Landing from '../../views/Landing';
 // import logo from '../../assets/logo.svg';
 
 const firebaseConfig = {
@@ -16,6 +17,8 @@ const firebaseConfig = {
 
 const App = () => {
   initializeApp(firebaseConfig);
+
+
 
   return (
     <BrowserRouter>
