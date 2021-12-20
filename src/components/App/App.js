@@ -5,6 +5,8 @@ import PrivateRoute from '../../services/PrivateRoute';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import Dashboard from '../Dashboard/Dashboard';
+import ForgotPassword from '../ForgotPassword/ForgotPassword';
+import UpdateProfile from '../UpdateProfile/UpdateProfile';
 // import logo from '../../assets/logo.svg';
 
 const App = () => {
@@ -21,8 +23,17 @@ const App = () => {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/update-profile"
+            element={
+              <PrivateRoute>
+                <UpdateProfile />
+              </PrivateRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
