@@ -13,7 +13,14 @@ const App = () => {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <PrivateRoute path="/" element={<Dashboard />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
