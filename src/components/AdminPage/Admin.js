@@ -1,11 +1,11 @@
-import { render } from 'express/lib/response'
-// import react from 'react'
-import './Admin.css'
+import React from "react";
+import "./Admin.css";
+import Nav from "../../components/LeftNavBar/nav";
 
-
-export const adminPage = () => {
-    render(
+export const Adminpage = () => {
+    return (
         <>
+            <Nav />
         </>
-    )
-}
+    );
+};

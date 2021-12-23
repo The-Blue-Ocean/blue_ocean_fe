@@ -3,13 +3,20 @@
     height: 100vh;
 }
 
+ body{
+    background:radial-gradient(#4b5563,#111827);
+
+
+}
+
+
+
 #login-section {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    background:radial-gradient(#4b5563,#111827);
-}
+    }
 
 #login-section-inner {
     display: flex;

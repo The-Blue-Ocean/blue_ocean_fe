@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./NewUser.css";
 
 export const NewUser = () => {
+  const navigate = useNavigate()
   return (
     <>
       <div className="newUserbox">
@@ -30,11 +32,8 @@ export const NewUser = () => {
           <div>Leave</div>
           <input type="date" className="short"></input>
         </div>
-        <button className="signinButton">Sign-Up</button>
+        <button className="signinButton" onClick={() => navigate('/home')}>Create User</button>
         <div>
-          <div>
-            Have a account already? <a href="https://trello.com/b/BinBwRl5/blue-ocean-trello">Login</a>{" "}
-          </div>
         </div>
       </div>
     </>
