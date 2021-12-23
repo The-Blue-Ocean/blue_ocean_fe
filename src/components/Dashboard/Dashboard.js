@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Button, Card, Alert } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../services/AuthContext'
@@ -18,6 +19,15 @@ export default function Dashboard() {
         } catch {
             setError('Failed to log out!')
         }
+    }
+
+    useEffect(() => {
+        fetchDataTest();
+    }, []);
+
+    const fetchDataTest = async () => {
+        const res = await axios.get('http://localhost/api/students');
+        console.log(res.data);
     }
 
     return (
