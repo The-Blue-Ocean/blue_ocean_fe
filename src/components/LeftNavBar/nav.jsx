@@ -18,7 +18,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { useNavigate } from 'react-router-dom';
-
+import BasicCard from '../Card/card';
 import './nav.css'
 
 const drawerWidth = 240;
@@ -83,7 +83,8 @@ export default function PersistentDrawerLeft() {
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
+  <>
+  <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar position="fixed" open={open}>
                 <Toolbar>
@@ -140,5 +141,7 @@ export default function PersistentDrawerLeft() {
                 </Typography>
             </Main>
         </Box>
+<BasicCard/>
+</>
     );
 }
