@@ -13,10 +13,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
+// import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import MailIcon from '@mui/icons-material/Mail';
 import { useNavigate } from 'react-router-dom';
 import BasicCard from '../Card/card';
 import './nav.css'
@@ -69,11 +69,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
-    
+
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-   const navigate = useNavigate()
-    
+    const navigate = useNavigate()
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -129,9 +129,9 @@ export default function PersistentDrawerLeft() {
                     ))}
                 </List>
                 <Divider />
-                    <div onClick={() => navigate('/createuser')}>
+                <div onClick={() => navigate('/createuser')}>
                     <ListItem button >Create Student</ListItem>
-                    </div>
+                </div>
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
