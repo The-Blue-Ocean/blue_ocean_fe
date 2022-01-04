@@ -1,0 +1,89 @@
+.newUserbox {
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    margin-top: 200px;
+  margin-left: 700px;
+  margin-bottom: 200px;
+  width: 500px;
+  display: block;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-self: center;
+  border-radius: 10px;  
+  backdrop-filter: blur(0px) saturate(200%);
+  -webkit-backdrop-filter: blur(0px) saturate(200%);
+  background-color: rgba(105, 119, 148, 0.3);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.newUserbox:hover {
+  box-shadow: 10px 10px 10px 5px black;
+}
+
+.userInputbasic {
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 25;
+    display: flex;
+  justify-items: left;
+}
+
+.userInputshort {
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+  margin: 60px;
+}
+.userInputbasic {
+  margin: 60px;
+}
+.newUserbox .long {
+    border-width: 0px;
+    border-color: #6998AB;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.userInputshort .short {
+    border-width: 0px;
+    border-color: #6998AB;
+  margin-left: 10px;
+  border-radius: 8px;
+  width: 35px;
+}
+
+.signinButton{
+    margin: 25px;
+    border-width: 0px;
+    border-radius: 20px;
+
+    font-size: 20px;
+    font-weight: lighter;
+    font-family: 'Rubik', sans-serif;
+}
+
+.signinButton:hover{ 
+    background-color: turquoise;
+}
+
+
+
+.topHeader{
+    margin-top: 20px;
+}
+
+a{
+color: rgb(79, 173, 228);
+text-decoration: none;
+background-color: transparent;
+
+}
+
+a:hover{
+    color: blue;
+    background-color: transparent;
+    text-decoration: none;
+}
