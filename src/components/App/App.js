@@ -2,11 +2,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
 
 import Landing from '../../views/Landing/Landing';
-import { Adminpage } from '../AdminPage/Admin';
+import { Adminpage } from '../../views/AdminPage/Admin';
 import { NewUser } from '../NewUser/NewUser';
 import { useState } from 'react';
 import React from 'react';
-// import logo from '../../assets/logo.svg';
 
 
 const firebaseConfig = {
