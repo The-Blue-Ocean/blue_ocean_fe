@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "./NewUser.css";
 
 export const NewUser = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+
+
   return (
     <>
       <div className="newUserbox">
@@ -32,9 +35,10 @@ export const NewUser = () => {
           <div>Leave</div>
           <input type="date" className="short"></input>
         </div>
-        <button className="signinButton" onClick={() => navigate('/home')}>Create User</button>
-        <div>
-        </div>
+        <button className="signinButton" onClick={() => navigate("/home")}>
+          Create User
+        </button>
+        <div></div>
       </div>
     </>
   );

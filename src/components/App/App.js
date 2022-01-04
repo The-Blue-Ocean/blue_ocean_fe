@@ -4,6 +4,8 @@ import { initializeApp } from "firebase/app";
 import Landing from '../../views/Landing/Landing';
 import { Adminpage } from '../AdminPage/Admin';
 import { NewUser } from '../NewUser/NewUser';
+import { useState } from 'react';
+import React from 'react';
 // import logo from '../../assets/logo.svg';
 
 
@@ -19,12 +21,13 @@ const firebaseConfig = {
 
 const App = () => {
   initializeApp(firebaseConfig);
-
+  
+  const [idCheck, setID] = useState([]);
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Landing/>} />
-      <Route path='/home' element={<Adminpage/>} />
+      <Route path="/" element={<Landing data={setID} ids={idCheck}/>} />
+      <Route path='/home' element={<Adminpage data={setID} ids={idCheck}/>} />
       <Route path='createuser' element={<NewUser/>}/>
       </Routes>
     </BrowserRouter>

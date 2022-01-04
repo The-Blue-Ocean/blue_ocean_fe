@@ -122,7 +122,7 @@ export default function PersistentDrawerLeft() {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['MCSP-09', 'MCSP-10', 'MCSP-11', 'MCSP-12'].map((text, index) => (
+                    {['test'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemText primary={text} />
                         </ListItem>
@@ -141,6 +141,7 @@ export default function PersistentDrawerLeft() {
                 </Typography>
             </Main>
         </Box>
+        {/* //Card Comp */}
 <BasicCard/>
 </>
     );
