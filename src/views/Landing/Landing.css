@@ -1,146 +1,136 @@
-.section {
-    width: 100vw;
-    height: 100vh;
+body {
+  background: radial-gradient(#4b5563, #111827);
 }
-
- body{
-    background:radial-gradient(#4b5563,#111827);
-
-
-}
-
-
 
 #login-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100vw;
+}
 
 #login-section-inner {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-
-    position: relative;
-    width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  position: relative;
+  width: 700px;
 }
 
 #soldier-logo {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 #landing-title {
-    position: absolute;
-    left: -400px;
-    top: 200px;
-    margin-left: 200px;
+  position: absolute;
+  left: -400px;
+  top: 200px;
+  margin-left: 200px;
 
-    color: #4b5563;
-    font-size: xxx-large;
+  color: #4b5563;
+  font-size: xxx-large;
 }
 
 #landing-title-span {
-    color: #fb923c;
-    text-decoration: underline;
+  color: #fb923c;
+  text-decoration: underline;
 }
 
 .form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #login-form {
-    margin-top: 100px;
-    margin-left: 340px;
+  margin-top: 100px;
+  margin-left: 340px;
 }
 
 .form-title {
-    color: white;
+  color: white;
 }
 
 .form-separator {
-    width: 2px;
-    height: 150px;
+  width: 2px;
+  height: 150px;
 
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 
-    background-color: white;
-    border-radius: 5px;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .form-inner {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-input {
-    width: 200px;
-    height: 35px;
+  width: 200px;
+  height: 35px;
 
-    margin-top: 5px;
-    margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 
-    color: white;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #fb923c;
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fb923c;
 }
 
 .form-input:focus {
-    outline: none;
+  outline: none;
 }
 
 .form-submit {
-    align-self: center;
+  align-self: center;
 
-    width: 75px;
-    height: 35px;
+  width: 75px;
+  height: 35px;
 
-    margin-top: 10px;
+  margin-top: 10px;
 
-    color: white;
-    background-color: transparent;
-    border: 1px solid #fb923c;
-    border-radius: 5px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid #fb923c;
+  border-radius: 5px;
 }
 
 .form-submit:hover {
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .form-prompt {
-    color: white;
-    opacity: 85%;
+  color: white;
+  opacity: 85%;
 }
 
 #password-prompt {
-    margin-top: 30px;
-    margin-left: 340px;
+  margin-top: 30px;
+  margin-left: 340px;
 }
 
 #signup-prompt {
-    margin-left: 340px;
+  margin-left: 340px;
 }
 
 .form-link {
-    color: #fb923c;
-    text-decoration: none;
+  color: #fb923c;
+  text-decoration: none;
 }
 
 .form-link:hover {
-    color: #fb923c;
+  color: #fb923c;
 }
 
 .show-pw-img {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .show-pw-img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

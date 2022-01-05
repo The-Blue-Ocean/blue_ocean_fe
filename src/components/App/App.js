@@ -1,13 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '../../services/AuthContext';
 import PrivateRoute from '../../services/PrivateRoute';
-// import Landing from '../../views/Landing/Landing';
-import Login from '../Auth/Login';
+import Landing from '../../views/Landing/Landing';
+// import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import Dashboard from '../Dashboard/Dashboard';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
-// import logo from '../../assets/logo.svg';
 
 const App = () => {
 
@@ -16,7 +15,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/"
+            path="/dashboard"
             element={
               <PrivateRoute>
                 <Dashboard />
@@ -31,7 +30,7 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>

@@ -24,8 +24,8 @@ export default function Dashboard() {
     }
 
     useEffect(() => {
-        fetchDataTest()
-    }, []);
+        fetchDataTest(token)
+    }, [token]);
 
     useEffect(() => {
         if (!token) {
@@ -40,10 +40,17 @@ export default function Dashboard() {
     // console.log(token)
 
     const fetchDataTest = async () => {
-        const res = await axios.get('https://blue-ocean-be.uc.r.appspot.com/api/students');
+        const res = await axios.get('http://localhost:80/api/students', {
+            headers: {
+                Authorization: 'Bearer ' + token,
+
+            }
+        });
         return setData(res.data)
         // return res.data
     }
+
+    // console.log(data)
 
     return (
         <>
@@ -54,6 +61,20 @@ export default function Dashboard() {
                     <strong>Email: </strong>{currentUser.email}
                     <Link to="update-profile" className='btn btn-danger w-100 mt-3'>Update Profile</Link>
                 </Card.Body>
+            </Card>
+            <Card>
+
+                {!data ? <p>Nothing</p> :
+                    data.map((item) => {
+                        return (
+                            <Card.Body className="card-body border m-3" key={item.id}>
+                                <p>Name: {item.name}</p>
+                                <p>Rank: {item.rank}</p>
+                                <p>Email: {item.email}</p>
+                                <p>Username: {item.username}</p>
+                            </Card.Body>
+                        )
+                    })}
             </Card>
             <div className="w-100 text-center mt-2">
                 <Button variant="link" onClick={handleLogout}>Log Out</Button>
