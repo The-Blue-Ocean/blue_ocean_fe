@@ -17,15 +17,16 @@ export default function Dashboard() {
 
         try {
             await logout()
-            navigate("/login", { replace: true });
+            navigate("/", { replace: true });
         } catch {
             setError('Failed to log out!')
         }
     }
 
     useEffect(() => {
-        fetchDataTest(token)
-    }, [token]);
+        fetchDataTest(token);
+
+    }, []);
 
     useEffect(() => {
         if (!token) {
@@ -37,20 +38,18 @@ export default function Dashboard() {
         }
     });
 
-    // console.log(token)
-
-    const fetchDataTest = async () => {
+    const fetchDataTest = async (token) => {
         const res = await axios.get('http://localhost:80/api/students', {
             headers: {
                 Authorization: 'Bearer ' + token,
-
             }
         });
-        return setData(res.data)
+        setData(res.data)
+        // return setData(res.data)
         // return res.data
     }
 
-    // console.log(data)
+    console.log(data)
 
     return (
         <>
@@ -63,18 +62,17 @@ export default function Dashboard() {
                 </Card.Body>
             </Card>
             <Card>
-
-                {!data ? <p>Nothing</p> :
-                    data.map((item) => {
+                {/* {data.length === 0 ? <p>Nothing</p>
+                    : data.map((item) => {
                         return (
-                            <Card.Body className="card-body border m-3" key={item.id}>
+                            <Card.Body className="card-body border m-3" key={item._id}>
                                 <p>Name: {item.name}</p>
                                 <p>Rank: {item.rank}</p>
                                 <p>Email: {item.email}</p>
                                 <p>Username: {item.username}</p>
                             </Card.Body>
                         )
-                    })}
+                    })} */}
             </Card>
             <div className="w-100 text-center mt-2">
                 <Button variant="link" onClick={handleLogout}>Log Out</Button>
