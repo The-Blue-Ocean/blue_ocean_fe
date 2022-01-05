@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { Button, Card, Alert } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../services/AuthContext'
+
+import { fetchData } from '../../services/fetchAPI'
 
 export default function Dashboard() {
     const [error, setError] = useState('')
     const [token, setToken] = useState('')
     const [data, setData] = useState('')
+    const [loading, setLoading] = useState(true)
     const { currentUser, logout } = useAuth()
 
     const navigate = useNavigate();
@@ -24,32 +27,16 @@ export default function Dashboard() {
     }
 
     useEffect(() => {
-        fetchDataTest(token);
-
-    }, []);
-
-    useEffect(() => {
         if (!token) {
             currentUser.getIdToken().then(
                 function (idToken) {
                     setToken(idToken)
                 }
             )
+        } else if (!data) {
+            fetchData(token).then(data => setData(data)).then(() => setLoading(false))
         }
     });
-
-    const fetchDataTest = async (token) => {
-        const res = await axios.get('http://localhost:80/api/students', {
-            headers: {
-                Authorization: 'Bearer ' + token,
-            }
-        });
-        setData(res.data)
-        // return setData(res.data)
-        // return res.data
-    }
-
-    console.log(data)
 
     return (
         <>
@@ -62,7 +49,7 @@ export default function Dashboard() {
                 </Card.Body>
             </Card>
             <Card>
-                {/* {data.length === 0 ? <p>Nothing</p>
+                {loading ? <p>Loading...</p>
                     : data.map((item) => {
                         return (
                             <Card.Body className="card-body border m-3" key={item._id}>
@@ -72,7 +59,7 @@ export default function Dashboard() {
                                 <p>Username: {item.username}</p>
                             </Card.Body>
                         )
-                    })} */}
+                    })}
             </Card>
             <div className="w-100 text-center mt-2">
                 <Button variant="link" onClick={handleLogout}>Log Out</Button>
