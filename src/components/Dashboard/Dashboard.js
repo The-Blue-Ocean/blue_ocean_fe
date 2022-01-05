@@ -6,6 +6,8 @@ import { useAuth } from '../../services/AuthContext'
 
 export default function Dashboard() {
     const [error, setError] = useState('')
+    const [token, setToken] = useState('')
+    const [data, setData] = useState('')
     const { currentUser, logout } = useAuth()
 
     const navigate = useNavigate();
@@ -22,19 +24,32 @@ export default function Dashboard() {
     }
 
     useEffect(() => {
-        fetchDataTest();
+        fetchDataTest()
     }, []);
 
+    useEffect(() => {
+        if (!token) {
+            currentUser.getIdToken().then(
+                function (idToken) {
+                    setToken(idToken)
+                }
+            )
+        }
+    });
+
+    // console.log(token)
+
     const fetchDataTest = async () => {
-        const res = await axios.get('http://localhost/api/students');
-        console.log(res.data);
+        const res = await axios.get('https://blue-ocean-be.uc.r.appspot.com/api/students');
+        return setData(res.data)
+        // return res.data
     }
 
     return (
         <>
             <Card>
                 <Card.Body>
-                    <h2 className='text-center mb-4'>Profile</h2>
+                    <h2 className='text-center mb-4'>Admin Dashboard</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <strong>Email: </strong>{currentUser.email}
                     <Link to="update-profile" className='btn btn-danger w-100 mt-3'>Update Profile</Link>
