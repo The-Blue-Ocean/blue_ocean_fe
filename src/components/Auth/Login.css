@@ -68,20 +68,20 @@ body {
 }
 
 .form-input {
-  width: 200px;
-  height: 35px;
+  width: 200px !important;
+  height: 35px !important;
 
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
 
-  color: white;
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid #fb923c;
+  color: white !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid #fb923c !important;
 }
 
 .form-input:focus {
-  outline: none;
+  outline: none !important;
 }
 
 .form-submit {

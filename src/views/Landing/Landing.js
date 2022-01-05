@@ -85,18 +85,18 @@ const Landing = (props) => {
             </button>
           </div>
         </div> */}
-        <p id={"password-prompt"} className={"form-prompt"}>
+        {/* <p id={"password-prompt"} className={"form-prompt"}>
           Forgot your password? Click{" "}
           <a className={"form-link"} href={"/"}>
             here
           </a>
-        </p>
-        <p id={"signup-prompt"} className={"form-prompt"}>
+        </p> */}
+        {/* <p id={"signup-prompt"} className={"form-prompt"}>
           Don't have an account? Signup{" "}
           <a className={"form-link"} href={"/"}>
             here
           </a>
-        </p>
+        </p> */}
       </div>
     </div>
   );

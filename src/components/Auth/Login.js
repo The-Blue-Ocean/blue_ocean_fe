@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Form, Button, Card, Alert } from 'react-bootstrap'
+import { Form, Alert } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../services/AuthContext'
 import './Login.css'
@@ -30,29 +30,34 @@ export default function Login() {
 
     return (
         <>
-            <Card className="form">
-                <Card.Body>
-                    <h2 className="text-center mb-4">Log In</h2>
+            <div id={"login-form"} className="form">
+                <h3 className={"form-title"}>Login</h3>
+                <div className={"form-separator"}> </div>
+                <div className={"form-inner"}>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" ref={emailRef} required />
+                            <Form.Control placeholder='Email' className='form-input' type="email" ref={emailRef} required />
                         </Form.Group>
                         <Form.Group id="password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" ref={passwordRef} required />
+                            <Form.Control className='form-input' placeholder="Password" type="password" ref={passwordRef} required />
                         </Form.Group>
-                        <Button disabled={loading} className="w-100 mt-2" type="submit">Log in</Button>
+                        <button disabled={loading} className="form-submit" type="submit">Log in</button>
                     </Form>
-                    <div className="w-100 text-center mt-3">
-                        <Link to="/forgot-password">Forgot Password</Link>
-                    </div>
-                </Card.Body>
-            </Card>
-            <div className="w-100 text-center mt-2">
-                Need an account? <Link to="/signup">Sign up</Link>
+                </div>
             </div>
+            <p id={"password-prompt"} className={"form-prompt"}>
+                Forgot your password? Click{" "}
+                <Link className={"form-link"} to="/forgot-password">
+                    here
+                </Link>
+            </p>
+            <p id={"signup-prompt"} className={"form-prompt"}>
+                Don't have an account? Signup
+                <Link className={"form-link"} to="/signup">
+                    here
+                </Link>
+            </p>
         </>
     )
 }
