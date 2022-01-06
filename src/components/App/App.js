@@ -4,9 +4,11 @@ import { initializeApp } from "firebase/app";
 import Landing from '../../views/Landing/Landing';
 import { Adminpage } from '../../views/AdminPage/Admin';
 import { NewUser } from '../NewUser/NewUser';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 import { DeleteUser } from '../DeleteUser/deleteuser';
+import axios from 'axios';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBAsoMYxzM46yavU-4Em-1ihbBNWzznvDg",
@@ -22,6 +24,15 @@ const App = () => {
   initializeApp(firebaseConfig);
   
   const [idCheck, setID] = useState([]);
+  
+  useEffect(() => {
+    axios
+    .get("https://blue-ocean-be.uc.r.appspot.com/api/students")
+    .then((response) => {
+      setID(response.data)
+    });
+  });
+  
   return (
     <BrowserRouter>
       <Routes>

@@ -21,8 +21,8 @@ export const DeleteUser = (props) => {
                       .split(" ")
                       .join("")}`
                   );
-
-                  console.log(e.target.innerHTML.split(" ").join(""));
+                  navigate('/home')
+                  
                 }}
                 key={element["_id"]}
                 value={element["_id"]}

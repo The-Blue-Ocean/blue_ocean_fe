@@ -21,13 +21,6 @@ const Landing = (props) => {
   
   let [loading, setLoading] = useState(false);
   let [color, setColor] = useState("#ffffff");
-  useEffect(() => {
-    axios
-      .get("https://blue-ocean-be.uc.r.appspot.com/api/students")
-      .then((response) => {
-        props.data(response.data);
-      });
-  });
 
   var placeText = "Your ID";
 
