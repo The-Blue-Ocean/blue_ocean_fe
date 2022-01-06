@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-const url = 'http://localhost/api/students'
+const url = 'http://localhost/api/admins'
 
-export const fetchData = async (token) => {
+export const fetchData = async (token, userRole) => {
     try {
         const { data } = await axios.get(url, {
             headers: {
                 Authorization: 'Bearer ' + token,
+                role: userRole,
             }
         });
 

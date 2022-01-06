@@ -34,7 +34,7 @@ export default function Dashboard() {
                 }
             )
         } else if (!data) {
-            fetchData(token).then(data => setData(data)).then(() => setLoading(false))
+            fetchData(token, currentUser.email).then(data => setData(data)).then(() => setLoading(false))
         }
     });
 
