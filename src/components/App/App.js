@@ -6,7 +6,7 @@ import { Adminpage } from '../../views/AdminPage/Admin';
 import { NewUser } from '../NewUser/NewUser';
 import { useState } from 'react';
 import React from 'react';
-
+import { DeleteUser } from '../DeleteUser/deleteuser';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBAsoMYxzM46yavU-4Em-1ihbBNWzznvDg",
@@ -28,6 +28,7 @@ const App = () => {
       <Route path="/" element={<Landing data={setID} ids={idCheck}/>} />
       <Route path='/home' element={<Adminpage data={setID} ids={idCheck}/>} />
       <Route path='createuser' element={<NewUser/>}/>
+      <Route path='/deleteStudent' element={<DeleteUser students={idCheck}/>}/>
       </Routes>
     </BrowserRouter>
   )

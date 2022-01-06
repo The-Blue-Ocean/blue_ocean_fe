@@ -8,11 +8,14 @@ const Card = (props) => {
                 {props.timePeriod}
             </p>
             <div className="card-separator"></div>
+            <div className='studentcontainer'>
             <div>{props.students.map(student => {
                 return (
-                    <p className="student"> - {student}</p>
-                )
-            })}           
+                        <button className="student"> - {student}</button>
+
+                        )
+                    })}           
+                    </div>
             </div>
         </div>
     )
