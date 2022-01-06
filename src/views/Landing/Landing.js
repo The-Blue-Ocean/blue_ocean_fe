@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import soldier_draft from "../../assets/soldier_draft.png";
 import eye from "../../assets/eye.svg";
 import eye_slash from "../../assets/eye-slash.svg";
+import { useNavigate } from "react-router-dom";
 import $ from "jquery";
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -14,7 +15,9 @@ const override = css`
   margin: 0 auto;
 `;
 
-const Landing = (props) => {  
+const Landing = (props) => {
+  const navigate = useNavigate();
+  
   let [loading, setLoading] = useState(false);
   let [color, setColor] = useState("#ffffff");
 
