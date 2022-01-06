@@ -126,7 +126,10 @@ export default function PersistentDrawerLeft() {
                         </List>
                     <Divider />
                     <div onClick={() => navigate('/createuser')}>
-                        <ListItem button >Create Student</ListItem>
+                        <ListItem button >Create a Student</ListItem>
+                    </div>
+                    <div onClick={() => navigate('/deleteStudent')}>
+                        <ListItem button >Delete a Student</ListItem>
                     </div>
                 </Drawer>
             <Main open={open}>
