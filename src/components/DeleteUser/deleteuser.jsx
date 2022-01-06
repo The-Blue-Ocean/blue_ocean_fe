@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./deleteuser.css";
 import axios from "axios";
+import "./deleteuser.css";
 
 export const DeleteUser = (props) => {
   const navigate = useNavigate();
