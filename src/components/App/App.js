@@ -1,11 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
 
 import Landing from '../../views/Landing/Landing';
 import Adminpage from '../../views/AdminPage/Admin';
 import { NewUser } from '../NewUser/NewUser';
-import { useEffect, useState } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DeleteUser } from '../DeleteUser/deleteuser';
 import axios from 'axios';
 
@@ -22,28 +21,32 @@ const firebaseConfig = {
 
 const App = () => {
   initializeApp(firebaseConfig);
-  const [idCheck, setID] = useState([]);
+  const [students, setStudents] = useState([]);
 
-  const setData = async (data) => {
-    setID(data);
-  };
-  
   useEffect(async () => {
     axios
-    .get("https://blue-ocean-be.uc.r.appspot.com/api/students")
+    .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
     .then((response) => {
-      setData(response.data);
+      setStudents(response.data);
       return;
     });
   }, []);
+
+  const onUserDelete = async () => {
+    axios
+    .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
+    .then((response) => {
+      setStudents(response.data);
+    });
+  }
   
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Landing data={setID} ids={idCheck}/>} />
-      <Route path='/home' element={<Adminpage data={setID} ids={idCheck}/>} />
-      <Route path='createuser' element={<NewUser/>}/>
-      <Route path='/deleteStudent' element={<DeleteUser students={idCheck}/>}/>
+        <Route path='/' element={<Landing data={setStudents} ids={students}/>} />
+        <Route path='/home' element={<Adminpage data={setStudents} ids={students}/>} />
+        <Route path='createuser' element={<NewUser/>}/>
+        <Route path='/deleteStudent' element={<DeleteUser students={students} onDelete={onUserDelete}/>}/>
       </Routes>
     </BrowserRouter>
   )
