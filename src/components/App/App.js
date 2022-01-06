@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
 
 import Landing from '../../views/Landing/Landing';
-import { Adminpage } from '../../views/AdminPage/Admin';
+import Adminpage from '../../views/AdminPage/Admin';
 import { NewUser } from '../NewUser/NewUser';
 import { useEffect, useState } from 'react';
 import React from 'react';
@@ -22,16 +22,20 @@ const firebaseConfig = {
 
 const App = () => {
   initializeApp(firebaseConfig);
-  
   const [idCheck, setID] = useState([]);
+
+  const setData = async (data) => {
+    setID(data);
+  };
   
-  useEffect(() => {
+  useEffect(async () => {
     axios
     .get("https://blue-ocean-be.uc.r.appspot.com/api/students")
     .then((response) => {
-      setID(response.data)
+      setData(response.data);
+      return;
     });
-  });
+  }, []);
   
   return (
     <BrowserRouter>
