@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
 
 import Landing from '../../views/Landing/Landing';
@@ -23,7 +23,7 @@ const App = () => {
   initializeApp(firebaseConfig);
   const [students, setStudents] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     axios
     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
     .then((response) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Landing.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -6,7 +6,6 @@ import soldier_draft from "../../assets/soldier_draft.png";
 import eye from "../../assets/eye.svg";
 import eye_slash from "../../assets/eye-slash.svg";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import $ from "jquery";
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
