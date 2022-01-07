@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const url = 'http://localhost/api/admins'
+const url = 'http://localhost/api/admin'
+// const url = 'http://localhost/api/student'
+// const urlAdmin = 'http://localhost/api/adminEmail'
 
 export const fetchData = async (token, userRole) => {
     try {
