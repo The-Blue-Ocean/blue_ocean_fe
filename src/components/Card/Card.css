@@ -1,0 +1,52 @@
+.card {
+    display: flex;
+    flex-direction: column;
+
+    width: 400px;
+    min-height: 100px;
+    margin: 10px;
+
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
+.time-period {
+    color: #9ca3af;
+    font-size: large;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.card-separator {
+    width: 280px;
+    height: 1px;
+    margin: 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    background-color: #e5e7eb;
+}
+
+.student {
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#000000;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.student:hover{
+color:#000000;
+background-color:#FFFFFF;
+}
+.studentcontainer{
+    display:flex;
+    flex-direction: flex-start;
+    justify-content: space-around;
+}

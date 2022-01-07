@@ -5,8 +5,6 @@ import "./NewUser.css";
 export const NewUser = () => {
   const navigate = useNavigate();
 
-
-
   return (
     <>
       <div className="newUserbox">
