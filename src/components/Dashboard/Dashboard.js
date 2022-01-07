@@ -36,7 +36,7 @@ export default function Dashboard() {
                 fetchData(token, currentUser.email).then(data => setData(data)).then(() => setLoading(false))
             )
         }
-    });
+    }, []);
 
     return (
         <>
@@ -49,7 +49,7 @@ export default function Dashboard() {
                 </Card.Body>
             </Card>
             <Card>
-                {/* {!data ? <p>Loading...</p>
+                {!data ? <p>Loading...</p>
                     : data.map((item) => {
                         return (
                             <Card.Body className="card-body border m-3" key={item._id}>
@@ -60,7 +60,7 @@ export default function Dashboard() {
                                 <p>Username: {item.username}</p>
                             </Card.Body>
                         )
-                    })} */}
+                    })}
             </Card>
             <div className="w-100 text-center mt-2">
                 <Button variant="link" onClick={handleLogout}>Log Out</Button>
