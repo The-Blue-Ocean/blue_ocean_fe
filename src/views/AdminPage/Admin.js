@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "../../components/LeftNavBar/nav";
 import Card from "../../components/Card/NewCard";
+
 import "./Admin.css";
 
 const Adminpage = (props) => {
@@ -43,6 +44,7 @@ const Adminpage = (props) => {
     else if(daysUntilETS <= 152) { studentsByETS[5].push(student); }
     else { studentsByETS[6].push(student); }
   }
+
 
   return (
     <>

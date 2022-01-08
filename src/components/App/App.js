@@ -36,9 +36,11 @@ const App = () => {
     axios
     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
     .then((response) => {
-      setStudents(response.data);
+      setID(response.data)
+     
     });
-  }
+  },[]);
+
   
   return (
     <BrowserRouter>
