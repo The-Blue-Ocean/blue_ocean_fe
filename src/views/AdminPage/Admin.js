@@ -4,7 +4,7 @@ import Nav from "../../components/LeftNavBar/nav";
 import Card from "../../components/Card/NewCard";
 export const Adminpage = (props) => {
   let testStudents = props.ids;
-  let phaseOneStudents = ["Jim", "Jill", "Ashely"];
+  
   let phaseTwoStudents = ["Brad", "Chris", "Anthony"];
   let phaseThreeStudents = ["Hanah", "Travis"];
   let phaseFourStudents = ["Willma"];
@@ -14,6 +14,7 @@ export const Adminpage = (props) => {
 let dates = testStudents.map((element,index) => {
     return  element['ets']
 })
+
   return (
     <>
       <Nav students={props.ids} />
@@ -28,7 +29,7 @@ let dates = testStudents.map((element,index) => {
         </div>
         <button
           onClick={() => {
-console.log(names)
+console.log(dates)
          }}
         ></button>
       </div>

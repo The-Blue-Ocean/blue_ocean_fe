@@ -30,8 +30,9 @@ const App = () => {
     .get("https://blue-ocean-be.uc.r.appspot.com/api/students")
     .then((response) => {
       setID(response.data)
+     
     });
-  });
+  },[]);
   
   return (
     <BrowserRouter>
