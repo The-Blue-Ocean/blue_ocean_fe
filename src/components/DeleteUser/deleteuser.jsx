@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./deleteuser.css";
 import axios from "axios";
+import "./deleteuser.css";
 
 export const DeleteUser = (props) => {
   const navigate = useNavigate();
@@ -16,13 +16,16 @@ export const DeleteUser = (props) => {
               <button
                 className="student"
                 onClick={(e) => {
+                  // Call to delete the selected student
                   axios.delete(
                     `https://blue-ocean-be.uc.r.appspot.com/api/del-student/${e.target.value
                       .split(" ")
                       .join("")}`
-                  );
-                  navigate('/home')
-                  
+                  ).then(() => { // After post request, call props on delete handler to set state
+                    props.onDelete()
+                      // After delete handler has set state, then navigate to home
+                      .then(() => {navigate('/home')});
+                  });
                 }}
                 key={element["_id"]}
                 value={element["_id"]}

@@ -6,16 +6,12 @@ import axios from "axios";
 
 export const NewUser = () => {
   const navigate = useNavigate();
-
   const [email, updateEmail] = useState("");
   const [cohort, updateCohort] = useState("");
   const [name, updateName] = useState("");
   const [rank, updateRank] = useState("");
   const [ets, updateEts] = useState("");
 const [leave, updateLeave] = useState(true)
-
-
-
 
   return (
     <>

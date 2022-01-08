@@ -11,8 +11,7 @@ const Card = (props) => {
             <div className='studentcontainer'>
             <div>{props.students.map(student => {
                 return (
-                        <button className="student"> - {student}</button>
-
+                        <button className="student"> - {student.name}</button>
                         )
                     })}           
                     </div>
