@@ -23,6 +23,7 @@ const App = () => {
   initializeApp(firebaseConfig);
   const [students, setStudents] = useState([]);
 
+
   useEffect(() => {
     axios
     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
@@ -36,10 +37,9 @@ const App = () => {
     axios
     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
     .then((response) => {
-      setID(response.data)
-     
+      setStudents(response.data);
     });
-  },[]);
+  }
 
   
   return (
