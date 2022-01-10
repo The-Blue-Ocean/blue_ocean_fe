@@ -50,7 +50,7 @@ const App = () => {
             path="/home"
             element={
               <PrivateRoute>
-                <Adminpage />
+                <Adminpage students={students} />
               </PrivateRoute>
             }
           />
