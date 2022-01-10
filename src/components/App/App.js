@@ -8,8 +8,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Adminpage from '../../views/AdminPage/Admin';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
-import NewUser from '../NewUser/NewUser';
-import DeleteUser from '../DeleteUser/deleteuser.jsx';
+import { NewUser } from '../NewUser/NewUser';
+import { DeleteUser } from '../DeleteUser/deleteuser';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 
 const App = () => {
