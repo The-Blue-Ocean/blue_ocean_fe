@@ -7,6 +7,7 @@ import { NewUser } from '../NewUser/NewUser';
 import React, { useEffect, useState } from 'react';
 import { DeleteUser } from '../DeleteUser/deleteuser';
 import axios from 'axios';
+import { Student } from '../../views/StudentPage/Student';
 
 
 const firebaseConfig = {
@@ -22,8 +23,9 @@ const firebaseConfig = {
 const App = () => {
   initializeApp(firebaseConfig);
   const [students, setStudents] = useState([]);
-
-
+  const [studentID, SetStudentID] = useState('')
+  
+  
   useEffect(() => {
     axios
     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
@@ -48,15 +50,20 @@ const App = () => {
       setStudents(response.data);
     });
   }
+  
 
+  
+  
+  
   
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Landing data={setStudents} ids={students}/>} />
-        <Route path='/home' element={<Adminpage data={setStudents} ids={students}/>} />
+        <Route path='/home' element={<Adminpage data={setStudents} ids={students} studentID={SetStudentID} />} />
         <Route path='createuser' element={<NewUser onCreate={onUserCreate}/>}/>
         <Route path='/deleteStudent' element={<DeleteUser students={students} onDelete={onUserDelete}/>}/>
+        <Route path='/student' element={<Student student={studentID}/>}/>
       </Routes>
     </BrowserRouter>
   )

@@ -54,19 +54,19 @@ const Adminpage = (props) => {
 
   return (
     <>
-      <Nav students={props.ids} />
+      <Nav user={'Welcome Admin'} students={props.ids} />
       <div className="content">
         <div className="break">
-          <Card timePeriod="30 Days" students={studentsByETS[30]} />
-          <Card timePeriod="60 Days" students={studentsByETS[60]} />
+          <Card timePeriod="30 Days" students={studentsByETS[30]} studentID={props.studentID} />
+          <Card timePeriod="60 Days" students={studentsByETS[60]} studentID={props.studentID} />
         </div>
         <div className="break">
-          <Card timePeriod="90 Days" students={studentsByETS[90]} />
-          <Card timePeriod="4 Months" students={studentsByETS[4]} />
+          <Card timePeriod="90 Days" students={studentsByETS[90]} studentID={props.studentID} />
+          <Card timePeriod="4 Months" students={studentsByETS[4]} studentID={props.studentID} />
         </div>
         <div className="break">
-          <Card timePeriod="5 Months" students={studentsByETS[5]} />
-          <Card timePeriod="6 Months" students={studentsByETS[6]} />
+          <Card timePeriod="5 Months" students={studentsByETS[5]} studentID={props.studentID} />
+          <Card timePeriod="6 Months" students={studentsByETS[6]} studentID={props.studentID} />
         </div>
       </div>
     </>

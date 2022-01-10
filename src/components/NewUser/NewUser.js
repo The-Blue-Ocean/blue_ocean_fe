@@ -89,6 +89,7 @@ export const NewUser = (props) => {
               })
               .then(() => {
                 props.onCreate();
+                props.studentcall()
               });
             navigate("/home");
           }}
