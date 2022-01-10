@@ -4,14 +4,14 @@ import "./NewUser.css";
 import axios from "axios";
 
 
-export const NewUser = () => {
+export const NewUser = (props) => {
   const navigate = useNavigate();
   const [email, updateEmail] = useState("");
   const [cohort, updateCohort] = useState("");
   const [name, updateName] = useState("");
   const [rank, updateRank] = useState("");
   const [ets, updateEts] = useState("");
-const [leave, updateLeave] = useState(true)
+  const [leave, updateLeave] = useState(true);
 
   return (
     <>
@@ -65,7 +65,11 @@ const [leave, updateLeave] = useState(true)
         </div>
         <div className="userInputshort">
           <label htmlFor="leaveChoice">Leave</label>
-          <select id="leaveChoice" className="short" onChange={(event) => updateLeave(event.target.value)}>
+          <select
+            id="leaveChoice"
+            className="short"
+            onChange={(event) => updateLeave(event.target.value)}
+          >
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </select>
@@ -73,21 +77,24 @@ const [leave, updateLeave] = useState(true)
         <button
           value="CreateUser"
           className="signinButton"
-          onClick={() => { 
-            axios.post(
-              "https://blue-ocean-be.uc.r.appspot.com/api/add-student",
-              {
+          onClick={() => {
+            axios
+              .post("https://blue-ocean-be.uc.r.appspot.com/api/add-student", {
                 email: email,
                 cohort: cohort,
                 name: name,
                 rank: rank,
                 ets: ets,
                 leave: leave,
-              }
-            );
-            navigate('/home')
+              })
+              .then(() => {
+                props.onCreate();
+              });
+            navigate("/home");
           }}
-        >Signup</button>
+        >
+          Signup
+        </button>
 
         <div></div>
       </div>

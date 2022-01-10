@@ -41,13 +41,21 @@ const App = () => {
     });
   }
 
+  const onUserCreate = async () => {
+    axios
+    .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
+    .then((response) => {
+      setStudents(response.data);
+    });
+  }
+
   
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Landing data={setStudents} ids={students}/>} />
         <Route path='/home' element={<Adminpage data={setStudents} ids={students}/>} />
-        <Route path='createuser' element={<NewUser/>}/>
+        <Route path='createuser' element={<NewUser onCreate={onUserCreate}/>}/>
         <Route path='/deleteStudent' element={<DeleteUser students={students} onDelete={onUserDelete}/>}/>
       </Routes>
     </BrowserRouter>
