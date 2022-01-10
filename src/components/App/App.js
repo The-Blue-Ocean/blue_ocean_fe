@@ -4,21 +4,53 @@ import PrivateRoute from '../../services/PrivateRoute';
 import Landing from '../../views/Landing/Landing';
 // import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
-import Dashboard from '../Dashboard/Dashboard';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+import Adminpage from '../../views/AdminPage/Admin';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
+import NewUser from '../NewUser/NewUser';
+import DeleteUser from '../DeleteUser/deleteuser.jsx';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 
 const App = () => {
+  // initializeApp(firebaseConfig);
+  const [students, setStudents] = useState([]);
+
+
+  useEffect(() => {
+    axios
+      .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
+      .then((response) => {
+        setStudents(response.data);
+        return;
+      });
+  }, []);
+
+  const onUserDelete = async () => {
+    axios
+      .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
+      .then((response) => {
+        setStudents(response.data);
+      });
+  }
+
+  const onUserCreate = async () => {
+    axios
+      .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
+      .then((response) => {
+        setStudents(response.data);
+      });
+  }
 
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route
-            path="/dashboard"
+            path="/home"
             element={
               <PrivateRoute>
-                <Dashboard />
+                <Adminpage />
               </PrivateRoute>
             }
           />
@@ -33,6 +65,8 @@ const App = () => {
           <Route path="/" element={<Landing />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path='/createuser' element={<NewUser onCreate={onUserCreate} />} />
+          <Route path='/deleteStudent' element={<DeleteUser students={students} onDelete={onUserDelete} />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

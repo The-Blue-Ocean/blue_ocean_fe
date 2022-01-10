@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "../../components/LeftNavBar/nav";
 import Card from "../../components/Card/NewCard";
+
 import "./Admin.css";
 
 const Adminpage = (props) => {
@@ -11,15 +12,15 @@ const Adminpage = (props) => {
 
   // Containers for students based on days until ETS
   const studentsByETS = {
-    30: [],     // 30 days out
-    60: [],     // 60 days out
-    90: [],     // 90 days out
-    4 : [],     // 4 months out
-    5 : [],     // 5 months out
-    6 : [],     // 6 months out
+    30: [], // 30 days out
+    60: [], // 60 days out
+    90: [], // 90 days out
+    4: [], // 4 months out
+    5: [], // 5 months out
+    6: [], // 6 months out
   };
 
-  for(let student of students) {
+  for (let student of students) {
     // Create a new date object for ets date
     // based on the student's ets date
     let etsDate = new Date(student.ets);
@@ -33,15 +34,22 @@ const Adminpage = (props) => {
     // 60 minutes per hour
     // 24 hours per day
     let daysUntilETS = Math.floor(timeUntilETS / (1000 * 60 * 60 * 24));
-    
+
     // Determine the appropriate array to push studnet to;
     // based on number of days until ets date
-    if(daysUntilETS <= 30) { studentsByETS[30].push(student); }
-    else if(daysUntilETS <= 60) { studentsByETS[60].push(student); }
-    else if(daysUntilETS <= 90) { studentsByETS[90].push(student); }
-    else if(daysUntilETS <= 120) { studentsByETS[4].push(student); }
-    else if(daysUntilETS <= 152) { studentsByETS[5].push(student); }
-    else { studentsByETS[6].push(student); }
+    if (daysUntilETS <= 30) {
+      studentsByETS[30].push(student);
+    } else if (daysUntilETS <= 60) {
+      studentsByETS[60].push(student);
+    } else if (daysUntilETS <= 90) {
+      studentsByETS[90].push(student);
+    } else if (daysUntilETS <= 120) {
+      studentsByETS[4].push(student);
+    } else if (daysUntilETS <= 152) {
+      studentsByETS[5].push(student);
+    } else {
+      studentsByETS[6].push(student);
+    }
   }
 
   return (
