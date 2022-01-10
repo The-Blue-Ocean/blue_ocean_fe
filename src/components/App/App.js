@@ -13,7 +13,6 @@ import { DeleteUser } from '../DeleteUser/deleteuser';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 
 const App = () => {
-  // initializeApp(firebaseConfig);
   const [students, setStudents] = useState([]);
 
 
