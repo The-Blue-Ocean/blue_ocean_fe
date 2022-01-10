@@ -6,7 +6,7 @@ import "./Admin.css";
 
 const Adminpage = (props) => {
   // Get the current list of students based on props
-  let students = props.ids;
+  let students = props.students;
   // Set the current date
   const currentDate = new Date();
 
@@ -24,6 +24,7 @@ const Adminpage = (props) => {
     // Create a new date object for ets date
     // based on the student's ets date
     let etsDate = new Date(student.ets);
+
 
     // Calculate the time in miliseconds until ets date
     let timeUntilETS = etsDate.getTime() - currentDate.getTime();
@@ -54,7 +55,11 @@ const Adminpage = (props) => {
 
   return (
     <>
+<<<<<<< HEAD
       <Nav user={'Welcome Admin'} students={props.ids} />
+=======
+      <Nav students={props._ids} />
+>>>>>>> 2891e55d8f1dc926b4104ee483dbe0fb31b1d2ec
       <div className="content">
         <div className="break">
           <Card timePeriod="30 Days" students={studentsByETS[30]} studentID={props.studentID} />
