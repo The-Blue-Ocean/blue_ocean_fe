@@ -11,12 +11,16 @@ export const Student = (props) => {
       .get(`https://blue-ocean-be.uc.r.appspot.com/api/students/${props.student}`)
       .then((response) => {
         setStudentData(response.data[0])
-        
-        });
-        
-    },[])
-  
-    return (
+
+      });
+
+  }, [props.student])
+
+
+  //console.log(studentData[0]['name'])
+  //studentData[0]['name']
+  //studentData[0]['rank']
+  return (
     <>
 
       <div className="studentcontainer">
