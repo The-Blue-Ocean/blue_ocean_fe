@@ -13,22 +13,10 @@ import { NewUser } from '../NewUser/NewUser';
 import { DeleteUser } from '../DeleteUser/deleteuser';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBAsoMYxzM46yavU-4Em-1ihbBNWzznvDg",
-  authDomain: "blueocean-612b2.firebaseapp.com",
-  projectId: "blueocean-612b2",
-  storageBucket: "blueocean-612b2.appspot.com",
-  messagingSenderId: "43711589559",
-  appId: "1:43711589559:web:effcb703d3262364feb132",
-  measurementId: "G-TW42PT564X"
-};
-
 const App = () => {
   const [students, setStudents] = useState([]);
-  const [studentID, SetStudentID] = useState('')
-  
-  
+  // const [studentID, SetStudentID] = useState('')
+
   useEffect(() => {
     axios
       .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
@@ -53,7 +41,6 @@ const App = () => {
         setStudents(response.data);
       });
   }
-  
 
   return (
     <AuthProvider>
