@@ -66,7 +66,7 @@ const App = () => {
             path="/student"
             element={
               <PrivateRoute>
-                <Student />
+                <Student student={studentID} />
               </PrivateRoute>
             }
           />
