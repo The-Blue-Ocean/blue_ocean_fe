@@ -14,7 +14,7 @@ export const Student = (props) => {
 
       });
 
-  }, [])
+  }, [props.student])
 
 
   //console.log(studentData[0]['name'])
