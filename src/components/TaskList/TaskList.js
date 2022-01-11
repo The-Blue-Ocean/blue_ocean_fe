@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 // import Task from '../Task/Task';
 import './TaskList.css';
@@ -8,7 +8,7 @@ const TaskList = (props) => {
     // Handle the collapse of each time period section
     const collapse = (e) => {
         let target = document.getElementById(e.target.id + "-list");
-        target.style.display = target.style.display == "none" 
+        target.style.display = target.style.display === "none" 
         ? ""
         : "none";
     }
