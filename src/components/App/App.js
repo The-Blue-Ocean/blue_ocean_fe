@@ -24,6 +24,7 @@ const App = () => {
     let theData = [...new Set(uniqueData.map(x => x.cohort))]
 
     setCohortData(theData)
+    console.log(theData)
   }
 
   useEffect(() => {
