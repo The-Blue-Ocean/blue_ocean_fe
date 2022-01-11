@@ -12,10 +12,23 @@ import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import { NewUser } from '../NewUser/NewUser';
 import { DeleteUser } from '../DeleteUser/deleteuser';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
+import { fetchData } from '../../services/fetchAPI'
 
 const App = () => {
   const [students, setStudents] = useState([]);
   const [studentID, SetStudentID] = useState('')
+  const [data, setData] = useState([]);
+  const [cohortData, setCohortData] = useState([]);
+
+  const filterData = (uniqueData) => {
+    let theData = [...new Set(uniqueData.map(x => x.cohort))]
+
+    setCohortData(theData)
+  }
+
+  useEffect(() => {
+    fetchData().then(data => setData(data)).then(filterData(data))
+  }, [data]);
 
   useEffect(() => {
     axios
@@ -50,7 +63,7 @@ const App = () => {
             path="/home"
             element={
               <PrivateRoute>
-                <Adminpage students={students} studentID={SetStudentID}/>
+                <Adminpage students={students} studentID={SetStudentID} cohortData={cohortData} />
               </PrivateRoute>
             }
           />

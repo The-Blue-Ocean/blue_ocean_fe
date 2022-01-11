@@ -65,7 +65,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft(props) {
-
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate()
@@ -79,9 +78,9 @@ export default function PersistentDrawerLeft(props) {
     };
 
     return (
-    <>
-        <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
+        <>
+            <Box sx={{ display: 'flex' }}>
+                <CssBaseline />
                 <AppBar position="fixed" open={open}>
                     <Toolbar>
                         <IconButton
@@ -117,13 +116,13 @@ export default function PersistentDrawerLeft(props) {
                         </IconButton>
                     </DrawerHeader>
                     <Divider />
-                        <List>
-                            {['test'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
-                        </List>
+                    <List>
+                        {!props.cohortData ? <p>Loading...</p> : props.cohortData.map((item) => (
+                            <ListItem button key={item}>
+                                <ListItemText primary={item} />
+                            </ListItem>
+                        ))}
+                    </List>
                     <Divider />
                     <div onClick={() => navigate('/createuser')}>
                         <ListItem button >Create a Student</ListItem>
@@ -132,14 +131,14 @@ export default function PersistentDrawerLeft(props) {
                         <ListItem button >Delete a Student</ListItem>
                     </div>
                 </Drawer>
-            <Main open={open}>
-                <DrawerHeader />
-                <Typography paragraph>
-                </Typography>
-                <Typography paragraph>
-                </Typography>
-            </Main>
-        </Box>
-    </>
+                <Main open={open}>
+                    <DrawerHeader />
+                    <Typography paragraph>
+                    </Typography>
+                    <Typography paragraph>
+                    </Typography>
+                </Main>
+            </Box>
+        </>
     );
 }

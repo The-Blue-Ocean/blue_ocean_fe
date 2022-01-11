@@ -55,7 +55,7 @@ const Adminpage = (props) => {
 
   return (
     <>
-      <Nav user={'Welcome Admin'} students={props.ids} />
+      <Nav user={'Welcome Admin'} students={props.ids} cohortData={props.cohortData} />
       <div className="content">
         <div className="break">
           <Card timePeriod="30 Days" students={studentsByETS[30]} studentID={props.studentID} />
