@@ -62,11 +62,27 @@ const App = () => {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/student"
+            element={
+              <PrivateRoute>
+                <Student />
+              </PrivateRoute>
+            }
+          />
+          <Route path='/deleteStudent' element={
+            <PrivateRoute>
+              <DeleteUser students={students} onDelete={onUserDelete} />
+            </PrivateRoute>}
+          />
+          <Route path='/createuser' element={
+            <PrivateRoute>
+              <NewUser onCreate={onUserCreate} />
+            </PrivateRoute>}
+          />
           <Route path="/" element={<Landing />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path='/createuser' element={<NewUser onCreate={onUserCreate} />} />
-          <Route path='/deleteStudent' element={<DeleteUser students={students} onDelete={onUserDelete} />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
