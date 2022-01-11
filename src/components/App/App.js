@@ -14,8 +14,7 @@ import UpdateProfile from '../UpdateProfile/UpdateProfile';
 
 const App = () => {
   const [students, setStudents] = useState([]);
-  const [studentID, SetStudentID] = useState('')
-
+  // const [studentID, SetStudentID] = useState('')
 
   useEffect(() => {
     axios
