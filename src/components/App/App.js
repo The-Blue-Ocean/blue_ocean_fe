@@ -15,7 +15,7 @@ import UpdateProfile from '../UpdateProfile/UpdateProfile';
 
 const App = () => {
   const [students, setStudents] = useState([]);
-  // const [studentID, SetStudentID] = useState('')
+  const [studentID, SetStudentID] = useState('')
 
   useEffect(() => {
     axios
@@ -50,7 +50,7 @@ const App = () => {
             path="/home"
             element={
               <PrivateRoute>
-                <Adminpage students={students} />
+                <Adminpage students={students} studentID={SetStudentID}/>
               </PrivateRoute>
             }
           />

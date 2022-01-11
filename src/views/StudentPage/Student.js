@@ -14,11 +14,7 @@ export const Student = (props) => {
         });
         
     },[])
-    
-    
- //console.log(studentData[0]['name'])
- //studentData[0]['name']
-//studentData[0]['rank']
+  
     return (
     <>
       
