@@ -55,11 +55,7 @@ const Adminpage = (props) => {
 
   return (
     <>
-<<<<<<< HEAD
-      <Nav user={'Welcome Admin'} students={props.ids} />
-=======
       <Nav students={props._ids} />
->>>>>>> 2891e55d8f1dc926b4104ee483dbe0fb31b1d2ec
       <div className="content">
         <div className="break">
           <Card timePeriod="30 Days" students={studentsByETS[30]} studentID={props.studentID} />
