@@ -1,5 +1,9 @@
-# Tracking a new You
-#### Blue Ocean - Front End
+<h1 align="center">Tracking a new You</h1>
+<h6 align="center">Blue Ocean - Front End</h6>
+
+<p align="center">
+  <img width="355" alt="soldier-draft-v1" src="https://user-images.githubusercontent.com/81219815/149171502-b8fe2ff9-f005-4ba4-b2cd-2dbd1bb2ca60.png">
+</p>
 
 ### Introduction
 This project was a 4 week long blue ocean where our team completed an app to track the transition timeline for out-processing soldiers
