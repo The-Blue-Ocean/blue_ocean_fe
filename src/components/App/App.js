@@ -4,8 +4,7 @@ import PrivateRoute from '../../services/PrivateRoute';
 import Landing from '../../views/Landing/Landing';
 // import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useState } from 'react'
 import { Student } from '../../views/StudentPage/Student';
 import Adminpage from '../../views/AdminPage/Admin';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
@@ -16,7 +15,7 @@ import UpdateProfile from '../UpdateProfile/UpdateProfile';
 
 const App = () => {
   const [students, setStudents] = useState([]);
-  const [studentID, SetStudentID] = useState('')
+  // const [studentID, SetStudentID] = useState('')
 
   // const onUserDelete = async () => {
   //   axios
