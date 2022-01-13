@@ -67,6 +67,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft(props) {
 
     const theme = useTheme();
+    theme.palette.primary.main = "#fb923c";
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate()
 
