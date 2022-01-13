@@ -1,6 +1,7 @@
-// import React, { useEffect } from "react";
-import "./Card.css";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Card.css";
+
 const Card = (props) => {
   const navigate = useNavigate()
 

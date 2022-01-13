@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./NewUser.css";
 import axios from "axios";
+
+import Nav from "../../components/LeftNavBar/nav";
+import "./NewUser.css";
 
 
 export const NewUser = (props) => {
@@ -15,89 +17,87 @@ export const NewUser = (props) => {
 
   return (
     <>
-      <div className="newUserbox">
-        <div className="topHeader">Create Account</div>
+      <Nav user={'Create Student'} students={props.ids} />
+      <div className="newuser-container">
+        <div className="newUserbox">
+          <div className="topHeader">Create Account</div>
+          <div className="newuser-separator"></div>
 
-        <div className="userInputbasic">
-          <div>Email</div>
-          <input
-            onChange={(event) => updateEmail(event.target.value)}
-            type="email"
-            name="email"
-            className="long"
-          ></input>
-        </div>
-        <div className="userInputbasic">
-          <div>Cohort</div>
-          <input
-            onChange={(event) => updateCohort(event.target.value)}
-            type="text"
-            name="cohort"
-            className="long"
-          ></input>
-        </div>
-        <div className="userInputbasic">
-          <div>Name</div>
-          <input
-            onChange={(event) => updateName(event.target.value)}
-            type="text"
-            name="name"
-            className="long"
-          ></input>
-        </div>
-        <div className="userInputbasic">
-          <div>Rank</div>
-          <input
-            onChange={(event) => updateRank(event.target.value)}
-            type="text"
-            name="rank"
-            className="long"
-          ></input>
-        </div>
-        <div className="userInputshort">
-          <div>ETS</div>
-          <input
-            onChange={(event) => updateEts(event.target.value)}
-            name="ets"
-            type="date"
-            className="short"
-          ></input>
-        </div>
-        <div className="userInputshort">
-          <label htmlFor="leaveChoice">Leave</label>
-          <select
-            id="leaveChoice"
-            className="short"
-            onChange={(event) => updateLeave(event.target.value)}
+            <label for="email" className="newuser-label">Email</label>
+            <input
+              onChange={(event) => updateEmail(event.target.value)}
+              type="email"
+              name="email"
+              className="newuser-input"
+            ></input>
+
+            <label for="email" className="newuser-label">Cohort</label>
+            <input
+              onChange={(event) => updateCohort(event.target.value)}
+              type="text"
+              name="cohort"
+              className="newuser-input"
+            ></input>
+
+            <label for="name" className="newuser-label">Name</label>
+            <input
+              onChange={(event) => updateName(event.target.value)}
+              type="text"
+              name="name"
+              className="newuser-input"
+            ></input>
+
+            <label for="rank" className="newuser-label">Rank</label>
+            <input
+              onChange={(event) => updateRank(event.target.value)}
+              type="text"
+              name="rank"
+              className="newuser-input"
+            ></input>
+
+            <label for="ets" className="newuser-label">ETS</label>
+            <input
+              onChange={(event) => updateEts(event.target.value)}
+              name="ets"
+              type="date"
+              className="newuser-ets"
+            ></input>
+
+            <label htmlFor="leaveChoice" className="newuser-label">Leave</label>
+            <select
+              id="leaveChoice"
+              className="newuser-leave"
+              onChange={(event) => updateLeave(event.target.value)}
+            >
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
+            </select>
+
+          <button
+            value="CreateUser"
+            className="newuser-submit"
+            onClick={() => {
+              axios
+                .post("https://blue-ocean-be.uc.r.appspot.com/api/add-student", {
+                  email: email,
+                  cohort: cohort,
+                  name: name,
+                  rank: rank,
+                  ets: ets,
+                  leave: leave,
+                })
+                .then(() => {
+                  props.onCreate();
+                  props.studentcall()
+                });
+              navigate("/home");
+            }}
           >
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-        </div>
-        <button
-          value="CreateUser"
-          className="signinButton"
-          onClick={() => {
-            axios
-              .post("https://blue-ocean-be.uc.r.appspot.com/api/add-student", {
-                email: email,
-                cohort: cohort,
-                name: name,
-                rank: rank,
-                ets: ets,
-                leave: leave,
-              })
-              .then(() => {
-                props.onCreate();
-                props.studentcall()
-              });
-            navigate("/home");
-          }}
-        >
-          Signup
-        </button>
+            Signup
+          </button>
 
-        <div></div>
+          <div></div>
+        </div>
       </div>
     </>
   );

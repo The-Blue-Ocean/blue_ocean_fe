@@ -1,0 +1,35 @@
+.taskList-period {
+    width: 90%;
+    min-height: 50px;
+    max-width: 1024px;
+    margin-top: 25px;
+}
+
+.period-header {
+    font-weight: bold;
+    font-size: small;
+    color: #374151;
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tasklist {
+    min-height: 200px;
+}
+
+.task {
+    display: flex;
+    flex-direction: row;
+}
+
+.task-checkbox {
+    margin-top: 5px;
+}
+
+.task-name {
+    margin-left: 10px;
+}
+
+.no-tasks {
+    color: #e5e7eb;
+}

@@ -1,7 +1,3 @@
-body {
-  background: radial-gradient(#4b5563, #111827);
-}
-
 #login-section {
   display: flex;
   flex-direction: column;

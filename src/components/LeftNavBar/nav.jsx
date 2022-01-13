@@ -5,7 +5,6 @@ import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -13,7 +12,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../services/AuthContext'
 import './nav.css'
@@ -69,6 +67,7 @@ export default function PersistentDrawerLeft(props) {
     const [error, setError] = useState('')
     const { logout } = useAuth()
     const theme = useTheme();
+    theme.palette.primary.main = "#fb923c";
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate()
 
@@ -130,6 +129,7 @@ export default function PersistentDrawerLeft(props) {
                         </IconButton>
                     </DrawerHeader>
                     <Divider />
+<<<<<<< HEAD
                     <List>
                         {props.cohortData && props.cohortData.map((item) => (
                             <ListItem button key={item}>
@@ -138,11 +138,16 @@ export default function PersistentDrawerLeft(props) {
                         ))}
                     </List>
                     <Divider />
+=======
+                    <div onClick={() => navigate('/home')}>
+                        <ListItem button className="nav-item" >Dashboard</ListItem>
+                    </div>
+>>>>>>> 1ae008fce09115f033110cedc76f01c82132178f
                     <div onClick={() => navigate('/createuser')}>
-                        <ListItem button >Create a Student</ListItem>
+                        <ListItem button className="nav-item" >Create a Student</ListItem>
                     </div>
                     <div onClick={() => navigate('/deleteStudent')}>
-                        <ListItem button >Delete a Student</ListItem>
+                        <ListItem button className="nav-item" >Delete a Student</ListItem>
                     </div>
                     <div onClick={handleLogout}>
                         <ListItem button >Log Out</ListItem>
