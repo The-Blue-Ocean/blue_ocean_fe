@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Card = (props) => {
   const navigate = useNavigate()
 
-
+  console.log(props)
   return (
     <div className="card">
       <p className="time-period">{props.timePeriod}</p>

@@ -12,49 +12,40 @@ import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import { NewUser } from '../NewUser/NewUser';
 import { DeleteUser } from '../DeleteUser/deleteuser';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
-import { fetchData } from '../../services/fetchAPI'
+// import { fetchData } from '../../services/fetchAPI'
 
 const App = () => {
   const [students, setStudents] = useState([]);
   const [studentID, SetStudentID] = useState('')
-  const [data, setData] = useState([]);
-  const [cohortData, setCohortData] = useState([]);
 
-  const filterData = (uniqueData) => {
-    let theData = [...new Set(uniqueData.map(x => x.cohort))]
+  // useEffect(() => {
+  //   fetchData().then(data => setData(data)).then(filterData(data))
+  // }, [data]);
 
-    setCohortData(theData)
-    console.log(theData)
-  }
+  // useEffect(() => {
+  //   axios
+  //     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
+  //     .then((response) => {
+  //       setStudents(response.data);
+  //       return;
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    fetchData().then(data => setData(data)).then(filterData(data))
-  }, [data]);
+  // const onUserDelete = async () => {
+  //   axios
+  //     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
+  //     .then((response) => {
+  //       setStudents(response.data);
+  //     });
+  // }
 
-  useEffect(() => {
-    axios
-      .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
-      .then((response) => {
-        setStudents(response.data);
-        return;
-      });
-  }, []);
-
-  const onUserDelete = async () => {
-    axios
-      .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
-      .then((response) => {
-        setStudents(response.data);
-      });
-  }
-
-  const onUserCreate = async () => {
-    axios
-      .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
-      .then((response) => {
-        setStudents(response.data);
-      });
-  }
+  // const onUserCreate = async () => {
+  //   axios
+  //     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
+  //     .then((response) => {
+  //       setStudents(response.data);
+  //     });
+  // }
 
   return (
     <AuthProvider>
@@ -64,7 +55,7 @@ const App = () => {
             path="/home"
             element={
               <PrivateRoute>
-                <Adminpage students={students} studentID={SetStudentID} cohortData={cohortData} />
+                <Adminpage />
               </PrivateRoute>
             }
           />
@@ -86,12 +77,14 @@ const App = () => {
           />
           <Route path='/deleteStudent' element={
             <PrivateRoute>
-              <DeleteUser students={students} onDelete={onUserDelete} />
+              <DeleteUser students={students} />
+              {/* onDelete={onUserDelete} */}
             </PrivateRoute>}
           />
           <Route path='/createuser' element={
             <PrivateRoute>
-              <NewUser onCreate={onUserCreate} />
+              <NewUser />
+              {/* onCreate={onUserCreate} */}
             </PrivateRoute>}
           />
           <Route path="/" element={<Landing />} />

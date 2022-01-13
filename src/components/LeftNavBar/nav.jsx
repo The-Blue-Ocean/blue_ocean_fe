@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react'
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -15,6 +15,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../services/AuthContext'
 import './nav.css'
 
 const drawerWidth = 240;
@@ -65,9 +66,22 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft(props) {
+    const [error, setError] = useState('')
+    const { logout } = useAuth()
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate()
+
+    async function handleLogout() {
+        setError('')
+
+        try {
+            await logout()
+            navigate("/", { replace: true });
+        } catch {
+            setError('Failed to log out!')
+        }
+    }
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -117,7 +131,7 @@ export default function PersistentDrawerLeft(props) {
                     </DrawerHeader>
                     <Divider />
                     <List>
-                        {!props.cohortData ? <p>Loading...</p> : props.cohortData.map((item) => (
+                        {!props.cohortData || props.cohortData.length === 0 ? <p>Loading...</p> : props.cohortData.map((item) => (
                             <ListItem button key={item}>
                                 <ListItemText primary={item} />
                             </ListItem>
@@ -129,6 +143,9 @@ export default function PersistentDrawerLeft(props) {
                     </div>
                     <div onClick={() => navigate('/deleteStudent')}>
                         <ListItem button >Delete a Student</ListItem>
+                    </div>
+                    <div onClick={handleLogout}>
+                        <ListItem button >Log Out</ListItem>
                     </div>
                 </Drawer>
                 <Main open={open}>
