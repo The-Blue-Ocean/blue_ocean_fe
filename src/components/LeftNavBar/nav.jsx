@@ -118,19 +118,14 @@ export default function PersistentDrawerLeft(props) {
                         </IconButton>
                     </DrawerHeader>
                     <Divider />
-                        <List>
-                            {['test'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
-                        </List>
-                    <Divider />
+                    <div onClick={() => navigate('/home')}>
+                        <ListItem button className="nav-item" >Dashboard</ListItem>
+                    </div>
                     <div onClick={() => navigate('/createuser')}>
-                        <ListItem button >Create a Student</ListItem>
+                        <ListItem button className="nav-item" >Create a Student</ListItem>
                     </div>
                     <div onClick={() => navigate('/deleteStudent')}>
-                        <ListItem button >Delete a Student</ListItem>
+                        <ListItem button className="nav-item" >Delete a Student</ListItem>
                     </div>
                 </Drawer>
             <Main open={open}>

@@ -42,8 +42,8 @@
 }
 
 .student:hover{
-color:#000000;
-background-color:#FFFFFF;
+    color:#000000;
+    background-color:#FFFFFF;
 }
 .studentcontainer{
     display:flex;
