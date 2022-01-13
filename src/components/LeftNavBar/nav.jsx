@@ -131,7 +131,7 @@ export default function PersistentDrawerLeft(props) {
                     </DrawerHeader>
                     <Divider />
                     <List>
-                        {!props.cohortData || props.cohortData.length === 0 ? <p>Loading...</p> : props.cohortData.map((item) => (
+                        {props.cohortData && props.cohortData.map((item) => (
                             <ListItem button key={item}>
                                 <ListItemText primary={item} />
                             </ListItem>

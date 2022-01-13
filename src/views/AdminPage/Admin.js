@@ -8,29 +8,27 @@ import { fetchData } from '../../services/fetchAPI'
 import "./Admin.css";
 
 const Adminpage = () => {
-  const [token, setToken] = useState('')
   const [data, setData] = useState([])
-  const { currentUser, logout } = useAuth()
-  const [cohortData, setCohortData] = useState([]);
-
-  // Filter data to display MCSPs on left nav
-  const filterData = (uniqueData = []) => {
-    let theData = [...new Set(uniqueData.map(x => x.cohort))]
-
-    setCohortData(theData)
-    // console.log(theData)
-  }
-
-  const studentsByETS = {
+  const { currentUser } = useAuth()
+  const [cohortData, setCohortData] = useState();
+  const [loadingData, setLoadingData] = useState(false);
+  const [studentsByETS, setStateStudentsETS] = useState({
     30: [], // 30 days out
     60: [], // 60 days out
     90: [], // 90 days out
     4: [], // 4 months out
     5: [], // 5 months out
     6: [], // 6 months out
-  };
+  });
 
-  const filterStudentEts = (data = []) => {
+  // Filter data to display MCSPs on left nav
+  const filterData = (uniqueData) => {
+    let theData = [...new Set(uniqueData.map(x => x.cohort))]
+
+    setCohortData(theData)
+  }
+
+  const filterStudentEts = (data) => {
     // Set the current date
     const currentDate = new Date();
 
@@ -64,51 +62,38 @@ const Adminpage = () => {
       } else {
         studentsByETS[6].push(student);
       }
-
-      console.log(studentsByETS[30])
     }
+    setStateStudentsETS(studentsByETS)
   }
 
-  // Containers for students based on days until ETS
-  // const studentsByETS = {
-  //   30: [], // 30 days out
-  //   60: [], // 60 days out
-  //   90: [], // 90 days out
-  //   4: [], // 4 months out
-  //   5: [], // 5 months out
-  //   6: [], // 6 months out
-  // };
-
   useEffect(() => {
-    currentUser.getIdToken().then(
-      function (idToken) {
-        setToken(idToken)
-      }
-    )
-  }, [])
-
-  useEffect(() => {
-    fetchData(token, currentUser.email).then(data => setData(data)).then(filterData(data)).then(filterStudentEts(data))
+    currentUser.getIdToken()
+      .then(idToken => fetchData(idToken, currentUser.email))
+      .then(data => {
+        setData(data)
+        filterData(data)
+        filterStudentEts(data)
+        setLoadingData(true)
+      })
   }, [])
 
   return (
     <>
-      <Nav user={'Welcome Admin'} students={data._ids} cohortData={cohortData} />
-      {!data || data.length === 0 ? <div>Loading...</div>
-        : <div className="content">
-          <div className="break">
-            <Card timePeriod="30 Days" students={studentsByETS[30]} studentID={data.studentID} />
-            <Card timePeriod="60 Days" students={studentsByETS[60]} studentID={data.studentID} />
-          </div>
-          <div className="break">
-            <Card timePeriod="90 Days" students={studentsByETS[90]} studentID={data.studentID} />
-            <Card timePeriod="4 Months" students={studentsByETS[4]} studentID={data.studentID} />
-          </div>
-          <div className="break">
-            <Card timePeriod="5 Months" students={studentsByETS[5]} studentID={data.studentID} />
-            <Card timePeriod="6 Months" students={studentsByETS[6]} studentID={data.studentID} />
-          </div>
+      {loadingData && <Nav user={'Welcome Admin'} students={data._ids} loadingData={loadingData} cohortData={cohortData} />}
+      {loadingData && <div className="content">
+        <div className="break">
+          <Card timePeriod="30 Days" students={studentsByETS[30]} studentID={data.studentID} />
+          <Card timePeriod="60 Days" students={studentsByETS[60]} studentID={data.studentID} />
         </div>
+        <div className="break">
+          <Card timePeriod="90 Days" students={studentsByETS[90]} studentID={data.studentID} />
+          <Card timePeriod="4 Months" students={studentsByETS[4]} studentID={data.studentID} />
+        </div>
+        <div className="break">
+          <Card timePeriod="5 Months" students={studentsByETS[5]} studentID={data.studentID} />
+          <Card timePeriod="6 Months" students={studentsByETS[6]} studentID={data.studentID} />
+        </div>
+      </div>
       }
     </>
   );

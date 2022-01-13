@@ -18,19 +18,6 @@ const App = () => {
   const [students, setStudents] = useState([]);
   const [studentID, SetStudentID] = useState('')
 
-  // useEffect(() => {
-  //   fetchData().then(data => setData(data)).then(filterData(data))
-  // }, [data]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
-  //     .then((response) => {
-  //       setStudents(response.data);
-  //       return;
-  //     });
-  // }, []);
-
   // const onUserDelete = async () => {
   //   axios
   //     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
