@@ -30,45 +30,46 @@ const Adminpage = () => {
     setCohortData(theData)
   }
 
-  const filterStudentEts = (data) => {
-    // Set the current date
-    const currentDate = new Date();
-
-    for (let student of data) {
-      // Create a new date object for ets date
-      // based on the student's ets date
-      let etsDate = new Date(student.ets);
-
-      // Calculate the time in miliseconds until ets date
-      let timeUntilETS = etsDate.getTime() - currentDate.getTime();
-
-      // Calculate the time in days until ets date; round down to nearest day
-      // 1000 miliseconds per second
-      // 60 seconds per minute
-      // 60 minutes per hour
-      // 24 hours per day
-      let daysUntilETS = Math.floor(timeUntilETS / (1000 * 60 * 60 * 24));
-
-      // Determine the appropriate array to push studnet to;
-      // based on number of days until ets date
-      if (daysUntilETS <= 30) {
-        studentsByETS[30].push(student);
-      } else if (daysUntilETS <= 60) {
-        studentsByETS[60].push(student);
-      } else if (daysUntilETS <= 90) {
-        studentsByETS[90].push(student);
-      } else if (daysUntilETS <= 120) {
-        studentsByETS[4].push(student);
-      } else if (daysUntilETS <= 152) {
-        studentsByETS[5].push(student);
-      } else {
-        studentsByETS[6].push(student);
-      }
-    }
-    setStateStudentsETS(studentsByETS)
-  }
 
   useEffect(() => {
+    const filterStudentEts = (data) => {
+      // Set the current date
+      const currentDate = new Date();
+
+      for (let student of data) {
+        // Create a new date object for ets date
+        // based on the student's ets date
+        let etsDate = new Date(student.ets);
+
+        // Calculate the time in miliseconds until ets date
+        let timeUntilETS = etsDate.getTime() - currentDate.getTime();
+
+        // Calculate the time in days until ets date; round down to nearest day
+        // 1000 miliseconds per second
+        // 60 seconds per minute
+        // 60 minutes per hour
+        // 24 hours per day
+        let daysUntilETS = Math.floor(timeUntilETS / (1000 * 60 * 60 * 24));
+
+        // Determine the appropriate array to push studnet to;
+        // based on number of days until ets date
+        if (daysUntilETS <= 30) {
+          studentsByETS[30].push(student);
+        } else if (daysUntilETS <= 60) {
+          studentsByETS[60].push(student);
+        } else if (daysUntilETS <= 90) {
+          studentsByETS[90].push(student);
+        } else if (daysUntilETS <= 120) {
+          studentsByETS[4].push(student);
+        } else if (daysUntilETS <= 152) {
+          studentsByETS[5].push(student);
+        } else {
+          studentsByETS[6].push(student);
+        }
+      }
+      setStateStudentsETS(studentsByETS)
+    }
+
     currentUser.getIdToken()
       .then(idToken => fetchData(idToken, currentUser.email))
       .then(data => {
@@ -78,7 +79,7 @@ const Adminpage = () => {
         filterStudentEts(data)
         setLoadingData(true)
       })
-  }, [currentUser, filterStudentEts, navigate])
+  }, [currentUser, navigate, studentsByETS])
 
   return (
     <>
