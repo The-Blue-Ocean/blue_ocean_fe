@@ -82,7 +82,7 @@ const Adminpage = () => {
 
   return (
     <>
-      {loadingData && <Nav user={'Welcome Admin'} students={data._ids} loadingData={loadingData} cohortData={cohortData} />}
+      {loadingData && <Nav user={'Welcome Admin'} isAdmin={data.isAdmin} students={data._ids} loadingData={loadingData} cohortData={cohortData} />}
       {loadingData && <div className="content">
         <div className="break">
           <Card timePeriod="30 Days" students={studentsByETS[30]} studentID={data.studentID} />

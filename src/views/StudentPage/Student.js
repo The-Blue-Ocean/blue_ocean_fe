@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+// import axios from "axios";
 
 import Nav from '../../components/LeftNavBar/nav';
 import TaskList from '../../components/TaskList/TaskList';
