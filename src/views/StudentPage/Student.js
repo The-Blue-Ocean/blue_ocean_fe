@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+// import axios from "axios";
 
 import Nav from '../../components/LeftNavBar/nav';
 import TaskList from '../../components/TaskList/TaskList';
@@ -8,22 +8,15 @@ import "./Student.css";
 export const Student = (props) => {
   const [studentData, setStudentData] = useState({})
 
-  useEffect(() => {
-    axios
-      .get(`https://blue-ocean-be.uc.r.appspot.com/api/students/${props.student}`)
-      .then((response) => {
-        // Adjust the case of the student data to 
-        // be displayed in the header
-        let data = response.data[0];
-        data.rank = data.rank.toLowerCase();
-        data.cohort = data.cohort.toLowerCase();
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://blue-ocean-be.uc.r.appspot.com/api/students/${props.student}`)
+  //     .then((response) => {
+  //       setStudentData(response.data[0])
 
-        // Set the student data to the modified data with
-        // the formatted case
-        setStudentData(data)
-      });
+  //     });
 
-  }, [props.student])
+  // }, [props.student])
 
   // Sample data for student tasks
   let studentTasks = {
@@ -49,7 +42,7 @@ export const Student = (props) => {
         {/* Loop through the data (sample for now, api data in the future) */}
         {/* Display a Task component for each value within the time period */}
         {Object.keys(studentTasks).map((key) =>
-          <TaskList key={key} timePeriod={key} tasks={studentTasks[key]}/>
+          <TaskList key={key} timePeriod={key} tasks={studentTasks[key]} />
         )}
       </div>
     </>

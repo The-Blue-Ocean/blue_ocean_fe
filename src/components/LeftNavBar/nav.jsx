@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react'
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -12,7 +12,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
+import List from '@mui/material/List';
+import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../services/AuthContext'
 import './nav.css'
 
 const drawerWidth = 240;
@@ -63,11 +66,23 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft(props) {
-
+    const [error, setError] = useState('')
+    const { logout } = useAuth()
     const theme = useTheme();
     theme.palette.primary.main = "#fb923c";
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate()
+
+    async function handleLogout() {
+        setError('')
+
+        try {
+            await logout()
+            navigate("/", { replace: true });
+        } catch {
+            setError('Failed to log out!')
+        }
+    }
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -78,9 +93,9 @@ export default function PersistentDrawerLeft(props) {
     };
 
     return (
-    <>
-        <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
+        <>
+            <Box sx={{ display: 'flex' }}>
+                <CssBaseline />
                 <AppBar position="fixed" open={open}>
                     <Toolbar>
                         <IconButton
@@ -115,25 +130,36 @@ export default function PersistentDrawerLeft(props) {
                             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                         </IconButton>
                     </DrawerHeader>
-                    <Divider />
                     <div onClick={() => navigate('/home')}>
                         <ListItem button className="nav-item" >Dashboard</ListItem>
                     </div>
+                    <Divider />
+                    <List>
+                        {props.cohortData && props.cohortData.map((item) => (
+                            <ListItem button key={item}>
+                                <ListItemText primary={item} />
+                            </ListItem>
+                        ))}
+                    </List>
+                    <Divider />
                     <div onClick={() => navigate('/createuser')}>
                         <ListItem button className="nav-item" >Create a Student</ListItem>
                     </div>
                     <div onClick={() => navigate('/deleteStudent')}>
                         <ListItem button className="nav-item" >Delete a Student</ListItem>
                     </div>
+                    <div onClick={handleLogout}>
+                        <ListItem button >Log Out</ListItem>
+                    </div>
                 </Drawer>
-            <Main open={open}>
-                <DrawerHeader />
-                <Typography paragraph>
-                </Typography>
-                <Typography paragraph>
-                </Typography>
-            </Main>
-        </Box>
-    </>
+                <Main open={open}>
+                    <DrawerHeader />
+                    <Typography paragraph>
+                    </Typography>
+                    <Typography paragraph>
+                    </Typography>
+                </Main>
+            </Box>
+        </>
     );
 }
