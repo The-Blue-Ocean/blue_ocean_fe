@@ -12,6 +12,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
+import List from '@mui/material/List';
+import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../services/AuthContext'
 import './nav.css'
@@ -128,8 +130,10 @@ export default function PersistentDrawerLeft(props) {
                             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                         </IconButton>
                     </DrawerHeader>
+                    <div onClick={() => navigate('/home')}>
+                        <ListItem button className="nav-item" >Dashboard</ListItem>
+                    </div>
                     <Divider />
-<<<<<<< HEAD
                     <List>
                         {props.cohortData && props.cohortData.map((item) => (
                             <ListItem button key={item}>
@@ -138,11 +142,6 @@ export default function PersistentDrawerLeft(props) {
                         ))}
                     </List>
                     <Divider />
-=======
-                    <div onClick={() => navigate('/home')}>
-                        <ListItem button className="nav-item" >Dashboard</ListItem>
-                    </div>
->>>>>>> 1ae008fce09115f033110cedc76f01c82132178f
                     <div onClick={() => navigate('/createuser')}>
                         <ListItem button className="nav-item" >Create a Student</ListItem>
                     </div>

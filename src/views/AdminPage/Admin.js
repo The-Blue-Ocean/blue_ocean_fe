@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Nav from "../../components/LeftNavBar/nav";
 import Card from "../../components/Card/NewCard";
 import { useAuth } from '../../services/AuthContext'
+import { useNavigate } from "react-router-dom";
 
 import { fetchData } from '../../services/fetchAPI'
 
@@ -20,6 +21,7 @@ const Adminpage = () => {
     5: [], // 5 months out
     6: [], // 6 months out
   });
+  const navigate = useNavigate()
 
   // Filter data to display MCSPs on left nav
   const filterData = (uniqueData) => {
@@ -71,6 +73,7 @@ const Adminpage = () => {
       .then(idToken => fetchData(idToken, currentUser.email))
       .then(data => {
         setData(data)
+        if (data.isAdmin === false) navigate('/student')
         filterData(data)
         filterStudentEts(data)
         setLoadingData(true)
