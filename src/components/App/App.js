@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '../../services/AuthContext';
 import PrivateRoute from '../../services/PrivateRoute';
@@ -12,26 +12,27 @@ import { NewUser } from '../NewUser/NewUser';
 import { DeleteUser } from '../DeleteUser/deleteuser';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 // import { fetchData } from '../../services/fetchAPI'
+import axios from "axios";
 
 const App = () => {
-  // const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState([]);
   // const [studentID, SetStudentID] = useState('')
 
-  // const onUserDelete = async () => {
-  //   axios
-  //     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
-  //     .then((response) => {
-  //       setStudents(response.data);
-  //     });
-  // }
+  const onUserDelete = async () => {
+    axios
+      .get('https://blue-ocean-be.uc.r.appspot.com/api/admin')
+      .then((response) => {
+        setStudents(response.data);
+      });
+  }
 
-  // const onUserCreate = async () => {
-  //   axios
-  //     .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
-  //     .then((response) => {
-  //       setStudents(response.data);
-  //     });
-  // }
+  const onUserCreate = async () => {
+    axios
+      .get('https://blue-ocean-be.uc.r.appspot.com/api/students')
+      .then((response) => {
+        setStudents(response.data);
+      });
+  }
 
   return (
     <AuthProvider>
@@ -63,14 +64,13 @@ const App = () => {
           />
           <Route path='/deleteStudent' element={
             <PrivateRoute>
-              <DeleteUser students={[]} />
-              {/* onDelete={onUserDelete} */}
+              <DeleteUser students={students} onDelete={onUserDelete} />
+
             </PrivateRoute>}
           />
           <Route path='/createuser' element={
             <PrivateRoute>
-              <NewUser />
-              {/* onCreate={onUserCreate} */}
+              <NewUser onCreate={onUserCreate} />
             </PrivateRoute>}
           />
           <Route path="/" element={<Landing />} />

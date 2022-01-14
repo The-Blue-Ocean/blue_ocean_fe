@@ -8,6 +8,8 @@ import "./deleteuser.css";
 export const DeleteUser = (props) => {
   const navigate = useNavigate();
 
+  console.log(props.students)
+
   return (
     <>
       <Nav user={'Delete Student'} students={props.ids} />
@@ -29,7 +31,7 @@ export const DeleteUser = (props) => {
                     ).then(() => { // After post request, call props on delete handler to set state
                       props.onDelete()
                         // After delete handler has set state, then navigate to home
-                        .then(() => {navigate('/home')});
+                        .then(() => { navigate('/home') });
                     });
                   }}
                   key={element["_id"]}
