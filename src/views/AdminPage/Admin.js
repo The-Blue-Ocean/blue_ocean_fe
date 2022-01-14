@@ -78,7 +78,7 @@ const Adminpage = () => {
         filterStudentEts(data)
         setLoadingData(true)
       })
-  }, [])
+  }, [currentUser, filterStudentEts, navigate])
 
   return (
     <>

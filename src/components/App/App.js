@@ -1,10 +1,10 @@
+import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '../../services/AuthContext';
 import PrivateRoute from '../../services/PrivateRoute';
 import Landing from '../../views/Landing/Landing';
 // import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
-import React, { useState } from 'react'
 import { Student } from '../../views/StudentPage/Student';
 import Adminpage from '../../views/AdminPage/Admin';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
@@ -14,7 +14,7 @@ import UpdateProfile from '../UpdateProfile/UpdateProfile';
 // import { fetchData } from '../../services/fetchAPI'
 
 const App = () => {
-  const [students, setStudents] = useState([]);
+  // const [students, setStudents] = useState([]);
   // const [studentID, SetStudentID] = useState('')
 
   // const onUserDelete = async () => {
@@ -63,7 +63,7 @@ const App = () => {
           />
           <Route path='/deleteStudent' element={
             <PrivateRoute>
-              <DeleteUser students={students} />
+              <DeleteUser students={[]} />
               {/* onDelete={onUserDelete} */}
             </PrivateRoute>}
           />

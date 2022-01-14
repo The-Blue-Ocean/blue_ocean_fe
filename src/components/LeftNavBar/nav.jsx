@@ -66,7 +66,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft(props) {
-    const [error, setError] = useState('')
+    const [, setError] = useState('')
     const { logout } = useAuth()
     const theme = useTheme();
     theme.palette.primary.main = "#fb923c";

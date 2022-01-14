@@ -6,7 +6,7 @@ import TaskList from '../../components/TaskList/TaskList';
 import "./Student.css";
 
 export const Student = (props) => {
-  const [studentData, setStudentData] = useState({})
+  const [studentData,] = useState({})
 
   // useEffect(() => {
   //   axios
